@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
         'UserEmail': currentUser.email,
         'Message': textController.text,
         'TimeStamp': Timestamp.now(),
+        'Likes': [],
       });
     }
     setState(() {
@@ -59,7 +60,10 @@ class _HomePageState extends State<HomePage> {
               if (snapshot.hasData) {
                 return ListView.builder(itemCount:snapshot.data!.docs.length, itemBuilder: (context, index) {
                   final post = snapshot.data!.docs[index];
-                  return WallPost(message: post['Message'], user: post['UserEmail']
+                  return WallPost(
+                    message: post['Message'],
+                    user: post['UserEmail'],
+                    postId: post.id,
                   );
                 }
                 );

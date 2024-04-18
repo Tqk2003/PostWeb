@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
         stream: FirebaseFirestore.instance.collection("Users").doc(currentUser.email).snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              final userData = snapshot.data!.data() as Map<String, dynamic>?;
+              final userData = snapshot.data!.data() as Map<String, dynamic>;
 
               return ListView(
                 children: [
@@ -69,9 +69,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   Padding(padding: const EdgeInsets.only(left: 25),
                     child: Text('My Details'),
                   ),
-                  MyTextBox(text: userData?['username'], sectionName: 'username', onPressed: () => editField('username'),
+                  MyTextBox(text: userData['username'], sectionName: 'username', onPressed: () => editField('username'),
                   ),
-                  MyTextBox(text: userData?['bio'], sectionName: 'bio', onPressed: () => editField('bio'),
+                  MyTextBox(text: userData['bio'], sectionName: 'bio', onPressed: () => editField('bio'),
                   ),
                   const SizedBox(height: 50),
                   Padding(padding: const EdgeInsets.only(left: 25.0),
