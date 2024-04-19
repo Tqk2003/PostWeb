@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('The Wall'),
+      appBar: AppBar(title: const Text('The Wall'),
       ),
       drawer: MyDrawer(
         onProfileTap: goToProfilePage,

@@ -1,5 +1,4 @@
 import 'my_list_tile.dart';
-
 import 'package:flutter/material.dart';
 
 class MyTextBox extends StatelessWidget{
@@ -18,7 +17,7 @@ class MyTextBox extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(sectionName),
 

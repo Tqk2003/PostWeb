@@ -14,16 +14,19 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final currentUser = FirebaseAuth.instance.currentUser!;
 
-  final usersCollection = FirebaseFirestore.instance.collection("Users");
+  final usersCollection = FirebaseFirestore.instance.collection("users");
 
   Future<void> editField(String field) async {
     String newValue = "";
-    await showDialog(context: context, builder: (context) => AlertDialog(title: Text("Edit " + field),
+    await showDialog(context: context, builder: (context) => AlertDialog(
+      backgroundColor: Colors.grey[900],
+      title: Text("Edit $field", style: const TextStyle(color: Colors.white),
+      ),
     content: TextField(
       autofocus: true,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
-        hintText: "Enternew $field",
+        hintText: "Enter new $field",
         hintStyle: TextStyle(color: Colors.grey),
       ),
       onChanged: (value) {
@@ -40,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
           onPressed: () => Navigator.of(context).pop(newValue),
         ),
       ],
-    )
+    ),
     );
 
     if (newValue.trim().length > 0) {
@@ -54,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(title: Text('Profile Page'),
       ),
       body: StreamBuilder<DocumentSnapshot>(
-        stream: FirebaseFirestore.instance.collection("Users").doc(currentUser.email).snapshots(),
+        stream: FirebaseFirestore.instance.collection("users").doc(currentUser.email).snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final userData = snapshot.data!.data() as Map<String, dynamic>;
@@ -66,7 +69,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 10),
                   Text(currentUser.email!, textAlign: TextAlign.center),
                   const SizedBox(height: 50),
-                  Padding(padding: const EdgeInsets.only(left: 25),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
                     child: Text('My Details'),
                   ),
                   MyTextBox(text: userData['username'], sectionName: 'username', onPressed: () => editField('username'),
@@ -75,9 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   const SizedBox(height: 50),
                   Padding(padding: const EdgeInsets.only(left: 25.0),
-                  child: Text(
-                    'My Posts',
-                  ),
+                  child: Text('My Posts'),
                   ),
                 ],
               );

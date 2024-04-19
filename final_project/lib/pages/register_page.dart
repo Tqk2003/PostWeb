@@ -29,10 +29,11 @@ class _RegisterPageState extends State<RegisterPage> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
-          password: passwordController.text);
+          password: passwordController.text,
+      );
 
       FirebaseFirestore.instance.collection("users")
-          .doc(userCredential.user!.email!)
+          .doc(userCredential.user!.email)
           .set({'username': emailController.text.split("@")[0],
                 'bio' : 'Empty bio..'
           });

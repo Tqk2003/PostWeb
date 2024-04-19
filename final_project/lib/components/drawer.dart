@@ -12,7 +12,7 @@ class MyDrawer extends StatelessWidget{
       backgroundColor: Colors.grey[900],
       child: Column(
         children: [
-          DrawerHeader(child: Icon(Icons.person, color: Colors.white, size: 60),),
+          const DrawerHeader(child: Icon(Icons.person, color: Colors.white, size: 60),),
           MyListTile(icon: Icons.home, text: 'H O M E', onTap: () => Navigator.pop(context),),
           MyListTile(icon: Icons.person, text: 'P R O F I L E', onTap: onProfileTap),
           MyListTile(icon: Icons.logout, text: 'L O G O U T', onTap: onSignOut),
